@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_login/flutter_facebook_login.dart';
+import 'package:github_sign_in/github_sign_in.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:loja_to_hero/models/user_model.dart';
 import 'package:loja_to_hero/screens/signup_screen.dart';
@@ -79,28 +79,6 @@ class _LoginScreenState extends State<LoginScreen> {
               return user;
             } catch (e) {
               _onFail();
-            }
-          }
-
-          Future<void> signUpWithFacebook() async {
-            try {
-              var facebookLogin = new FacebookLogin();
-              var result = await facebookLogin.logIn(['email']);
-
-              if (result.status == FacebookLoginStatus.loggedIn) {
-                final AuthCredential credential =
-                    FacebookAuthProvider.getCredential(
-                  accessToken: result.accessToken.token,
-                );
-                final FirebaseUser user = (await FirebaseAuth.instance
-                    .signInWithCredential(credential)
-                    .then((user) {
-                  print("signed in " + user.displayName);
-                }));
-                return user;
-              }
-            } catch (e) {
-              print(e.message);
             }
           }
 
@@ -234,7 +212,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Text(
-                          'Login com o Facebook',
+                          'Login com o GitHub',
                           style: TextStyle(
                             fontSize: 18,
                             color: Colors.white,
@@ -247,9 +225,26 @@ class _LoginScreenState extends State<LoginScreen> {
                         )
                       ],
                     ),
-                    color: Colors.blue[900],
-                    onPressed: () {
-                      print(signUpWithFacebook());
+                    color: Colors.black,
+                    onPressed: () async {
+                      final GitHubSignIn gitHubSignIn = GitHubSignIn(
+                          clientId: "05e3b2d33cf9dac57592",
+                          clientSecret:
+                              "add339b6ba3c28a0b62679e976a58957a4694cc4",
+                          redirectUrl:
+                              "https://loja-to-hero.firebaseapp.com/__/auth/handler");
+                      var result = await gitHubSignIn.signIn(context);
+                      switch (result.status) {
+                        case GitHubSignInResultStatus.ok:
+                          print(result.token);
+                          print("Deu certo");
+                          break;
+
+                        case GitHubSignInResultStatus.cancelled:
+                        case GitHubSignInResultStatus.failed:
+                          print(result.errorMessage);
+                          break;
+                      }
                     },
                   ),
                 ),
