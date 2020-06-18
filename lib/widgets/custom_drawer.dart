@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:loja_to_hero/models/user_model.dart';
 import 'package:loja_to_hero/screens/login_screen.dart';
 import 'package:loja_to_hero/tiles/drawer_tile.dart';
-import 'package:loja_to_hero/widgets/size_config.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -12,7 +11,6 @@ class CustomDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     Widget _buildDrawerBack() => Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -102,14 +100,14 @@ class CustomDrawer extends StatelessWidget {
                 ),
               ),
               Divider(),
-              DrawerTile(Icons.home, "Início", pageController, 0),
-              DrawerTile(Icons.list, "Produtos", pageController, 1),
+              DrawerTile(Icons.home, "Início", pageController, 1),
+              DrawerTile(Icons.list, "Produtos", pageController, 0),
               DrawerTile(Icons.location_off, "Lojas", pageController, 2),
               DrawerTile(
                   Icons.playlist_add_check, "Meus Pedidos", pageController, 3),
+              Divider(),
             ],
           ),
-          Divider(),
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(

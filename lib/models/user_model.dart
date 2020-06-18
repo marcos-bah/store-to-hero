@@ -19,7 +19,6 @@ class UserModel extends Model {
   }
 
   signUpGoogle(user) async {
-    print("entrei");
     userData = {
       "name": user.displayName,
       "email": user.email,

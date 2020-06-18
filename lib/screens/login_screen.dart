@@ -236,13 +236,21 @@ class _LoginScreenState extends State<LoginScreen> {
                       var result = await gitHubSignIn.signIn(context);
                       switch (result.status) {
                         case GitHubSignInResultStatus.ok:
-                          print(result.token);
-                          print("Deu certo");
+                          final AuthCredential credential =
+                              GithubAuthProvider.getCredential(
+                            token: result.token,
+                          );
+
+                          final FirebaseUser user = await FirebaseAuth.instance
+                              .signInWithCredential(credential);
+
+                          _onSuccess();
+                          model.signUpGoogle(user);
                           break;
 
                         case GitHubSignInResultStatus.cancelled:
                         case GitHubSignInResultStatus.failed:
-                          print(result.errorMessage);
+                          _onFail();
                           break;
                       }
                     },
