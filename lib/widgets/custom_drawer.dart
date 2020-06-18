@@ -107,20 +107,30 @@ class CustomDrawer extends StatelessWidget {
               DrawerTile(Icons.location_off, "Lojas", pageController, 2),
               DrawerTile(
                   Icons.playlist_add_check, "Meus Pedidos", pageController, 3),
-              Divider(),
-              Positioned(
-                bottom: 0.0,
-                left: (SizeConfig.screenWidth) / 10,
-                child: Container(
-                  height: 8 * SizeConfig.blockSizeVertical,
-                  child: Image.asset(
-                    "images/logo-exp-branco.png",
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
             ],
-          )
+          ),
+          Divider(),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: EdgeInsets.all(10.0),
+              child: Image.asset(
+                "images/logo-exp-branco.png",
+                fit: BoxFit.contain,
+              ),
+            ),
+          ),
+          /* Positioned(
+            bottom: 0.0,
+            left: (SizeConfig.screenWidth) / 5,
+            child: Container(
+              height: 11 * SizeConfig.blockSizeVertical,
+              child: Image.asset(
+                "images/logo-exp-branco.png",
+                fit: BoxFit.contain,
+              ),
+            ),
+          ),*/
         ],
       ),
     );
