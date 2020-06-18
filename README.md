@@ -2,6 +2,7 @@
 
 A new Flutter project.
 
+![Animação](https://github.com/marcos-bah/store-to-hero/blob/development/docs/animacao.gif)
 
 ## Getting Started
 
