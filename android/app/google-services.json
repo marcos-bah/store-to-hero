@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "448322037184",
+    "firebase_url": "https://loja-to-hero.firebaseio.com",
+    "project_id": "loja-to-hero",
+    "storage_bucket": "loja-to-hero.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:448322037184:android:cd5bdc1c1ba867870f5425",
+        "android_client_info": {
+          "package_name": "com.example.loja_to_hero"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "448322037184-imph3o1d71mfj1328eemn4nh4an96udm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPPdw7GBOsnvRb_H3zSjCNzPKSX7vaab8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "448322037184-imph3o1d71mfj1328eemn4nh4an96udm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
