@@ -5,6 +5,7 @@ import 'package:loja_to_hero/datas/products_data.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:loja_to_hero/models/cart_model.dart';
 import 'package:loja_to_hero/models/user_model.dart';
+import 'package:loja_to_hero/screens/cart_screen.dart';
 import 'package:loja_to_hero/screens/login_screen.dart';
 
 class ProductScreen extends StatefulWidget {
@@ -128,6 +129,8 @@ class _ProductScreenState extends State<ProductScreen> {
                               cartProduct.category = product.category;
 
                               CartModel.of(context).addCartItem(cartProduct);
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => CartScreen()));
                             } else {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) => LoginScreen()));

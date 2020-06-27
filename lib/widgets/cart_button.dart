@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:loja_to_hero/screens/cart_screens.dart';
+import 'package:loja_to_hero/screens/cart_screen.dart';
 
 class CartButton extends StatelessWidget {
   @override
