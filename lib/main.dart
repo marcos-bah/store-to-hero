@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loja_to_hero/models/cart_model.dart';
 import 'package:loja_to_hero/models/user_model.dart';
 import 'package:loja_to_hero/screens/home_screen.dart';
 import 'package:scoped_model/scoped_model.dart';
@@ -13,14 +14,21 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScopedModel<UserModel>(
       model: UserModel(),
-      child: MaterialApp(
-        title: 'Flutter`s Agro',
-        theme: ThemeData(
-          primarySwatch: Colors.green,
-          primaryColor: Colors.lightGreen,
-        ),
-        debugShowCheckedModeBanner: false,
-        home: HomeScreen(),
+      child: ScopedModelDescendant<UserModel>(
+        builder: (context, child, model) {
+          return ScopedModel<CartModel>(
+            model: CartModel(model),
+            child: MaterialApp(
+              title: 'Flutter`s Agro',
+              theme: ThemeData(
+                primarySwatch: Colors.green,
+                primaryColor: Colors.lightGreen,
+              ),
+              debugShowCheckedModeBanner: false,
+              home: HomeScreen(),
+            ),
+          );
+        },
       ),
     );
   }

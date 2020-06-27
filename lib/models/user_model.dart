@@ -11,6 +11,9 @@ class UserModel extends Model {
 
   bool isLoading = false;
 
+  static UserModel of(BuildContext context) =>
+      ScopedModel.of<UserModel>(context);
+
   @override
   void addListener(listener) {
     super.addListener(listener);
@@ -19,6 +22,7 @@ class UserModel extends Model {
   }
 
   signUpGoogle(user) async {
+    print(user);
     userData = {
       "name": user.displayName,
       "email": user.email,

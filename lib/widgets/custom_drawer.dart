@@ -118,17 +118,6 @@ class CustomDrawer extends StatelessWidget {
               ),
             ),
           ),
-          /* Positioned(
-            bottom: 0.0,
-            left: (SizeConfig.screenWidth) / 5,
-            child: Container(
-              height: 11 * SizeConfig.blockSizeVertical,
-              child: Image.asset(
-                "images/logo-exp-branco.png",
-                fit: BoxFit.contain,
-              ),
-            ),
-          ),*/
         ],
       ),
     );

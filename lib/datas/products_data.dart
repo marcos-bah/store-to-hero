@@ -20,4 +20,12 @@ class ProductData {
     images = s.data['images'];
     sizes = s.data['sizes'];
   }
+
+  Map<String, dynamic> toResumeMap() {
+    return {
+      "title": title,
+      "description": description,
+      "price": price,
+    };
+  }
 }
