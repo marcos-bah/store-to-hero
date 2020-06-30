@@ -56,7 +56,8 @@ class CartTile extends StatelessWidget {
                       IconButton(
                         icon: Icon(Icons.remove),
                         color: Theme.of(context).primaryColor,
-                        onPressed: cartProduct.quantity > 1
+                        onPressed: (cartProduct.quantity > 1 &&
+                                cartProduct.quantity < 99)
                             ? () {
                                 CartModel.of(context).decProduct(cartProduct);
                               }

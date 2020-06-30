@@ -22,16 +22,18 @@ class UserModel extends Model {
   }
 
   signUpGoogle(user) async {
-    print(user);
-    userData = {
+    Map<String, dynamic> userDate = {
       "name": user.displayName,
       "email": user.email,
+      "tel": user.phoneNumber,
     };
+
     isLoading = true;
     firebaseUser = user;
+
+    await _saveUserData(userDate);
     await _loadCurrentUser();
     isLoading = false;
-    print(userData);
     notifyListeners();
   }
 

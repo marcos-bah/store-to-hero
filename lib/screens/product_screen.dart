@@ -2,7 +2,6 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
 import 'package:loja_to_hero/datas/cart_product.dart';
 import 'package:loja_to_hero/datas/products_data.dart';
-import 'package:carousel_pro/carousel_pro.dart';
 import 'package:loja_to_hero/models/cart_model.dart';
 import 'package:loja_to_hero/models/user_model.dart';
 import 'package:loja_to_hero/screens/cart_screen.dart';
@@ -10,8 +9,6 @@ import 'package:loja_to_hero/screens/login_screen.dart';
 
 class ProductScreen extends StatefulWidget {
   final ProductData product;
-
-  String size;
 
   ProductScreen(this.product);
 
@@ -22,6 +19,7 @@ class ProductScreen extends StatefulWidget {
 class _ProductScreenState extends State<ProductScreen> {
   final ProductData product;
   String size;
+  String comment = "";
   _ProductScreenState(this.product);
 
   @override
@@ -116,6 +114,20 @@ class _ProductScreenState extends State<ProductScreen> {
                 SizedBox(
                   height: 16.0,
                 ),
+                TextFormField(
+                  maxLines: 3,
+                  initialValue: "Sem comentários",
+                  decoration: InputDecoration(
+                    labelText: 'Comentários',
+                    border: OutlineInputBorder(),
+                  ),
+                  onChanged: (text) {
+                    comment = text;
+                  },
+                ),
+                SizedBox(
+                  height: 16.0,
+                ),
                 SizedBox(
                   height: 44.0,
                   child: RaisedButton(
@@ -127,6 +139,7 @@ class _ProductScreenState extends State<ProductScreen> {
                               cartProduct.quantity = 1;
                               cartProduct.pid = product.id;
                               cartProduct.category = product.category;
+                              cartProduct.comment = comment;
                               cartProduct.productData = product;
 
                               CartModel.of(context).addCartItem(cartProduct);
@@ -164,17 +177,6 @@ class _ProductScreenState extends State<ProductScreen> {
                   product.description,
                   style: TextStyle(
                     fontSize: 16.0,
-                  ),
-                ),
-                SizedBox(
-                  height: 16.0,
-                ),
-                TextFormField(
-                  maxLines: 3,
-                  initialValue: "Sem comentários",
-                  decoration: InputDecoration(
-                    labelText: 'Comentários',
-                    border: OutlineInputBorder(),
                   ),
                 ),
               ],

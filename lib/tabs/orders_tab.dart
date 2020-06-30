@@ -25,6 +25,8 @@ class OrdersTab extends StatelessWidget {
             return ListView(
               children: snapshot.data.documents
                   .map((e) => OrderTile(e.documentID))
+                  .toList()
+                  .reversed
                   .toList(),
             );
           }

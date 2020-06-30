@@ -26,46 +26,64 @@ class OrderTile extends StatelessWidget {
               );
             } else {
               int status = snapshot.data["status"];
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              return Stack(
                 children: <Widget>[
-                  Text(
-                    "Código do pedido: ${snapshot.data.documentID}",
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                    height: 4.0,
-                  ),
-                  Text(
-                    _buildProductsText(snapshot.data),
-                  ),
-                  SizedBox(
-                    height: 4.0,
-                  ),
-                  Text(
-                    "Status do Pedido: ",
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                    height: 4.0,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      _buildCircle("1", "Preparação", status, 1),
-                      Container(
-                        height: 1.0,
-                        width: 40,
-                        color: Colors.grey[500],
+                      Text(
+                        "Código do pedido: ${snapshot.data.documentID}",
+                        style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      _buildCircle("2", "Transporte", status, 2),
-                      Container(
-                        height: 1.0,
-                        width: 40,
-                        color: Colors.grey[500],
+                      SizedBox(
+                        height: 4.0,
                       ),
-                      _buildCircle("3", "Entrega", status, 3),
+                      Text(
+                        _buildProductsText(snapshot.data),
+                      ),
+                      SizedBox(
+                        height: 4.0,
+                      ),
+                      Text(
+                        "Status do Pedido: ",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        height: 4.0,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          _buildCircle("1", "Preparação", status, 1),
+                          Container(
+                            height: 1.0,
+                            width: 40,
+                            color: Colors.grey[500],
+                          ),
+                          _buildCircle("2", "Transporte", status, 2),
+                          Container(
+                            height: 1.0,
+                            width: 40,
+                            color: Colors.grey[500],
+                          ),
+                          _buildCircle("3", "Entrega", status, 3),
+                        ],
+                      ),
                     ],
+                  ),
+                  Opacity(
+                    opacity: 0.5,
+                    child: Align(
+                      alignment: Alignment.bottomRight,
+                      child: Padding(
+                        padding: EdgeInsets.all(10.0),
+                        child: Image.asset(
+                          "images/logo-exp-branco.png",
+                          width: 100,
+                          height: 40,
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               );
@@ -77,11 +95,14 @@ class OrderTile extends StatelessWidget {
   }
 
   String _buildProductsText(DocumentSnapshot snapshot) {
-    String text = "Descrição: \n";
+    String text = "";
     for (LinkedHashMap p in snapshot.data["products"]) {
       text +=
           "${p["quantity"]} x ${p["product"]["title"]} (R\$ ${p["product"]["price"].toStringAsFixed(2)})\n";
+      text += p["comment"] != null ? "Comentários: ${p["comment"]} \n" : "";
+      print(p["comment"]);
     }
+
     text += "Total: R\$ ${snapshot.data["totalPrice"].toStringAsFixed(2)}";
     return text;
   }
