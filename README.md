@@ -2,7 +2,7 @@
 
 A new Flutter project.
 
-![Animação](https://github.com/marcos-bah/store-to-hero/blob/development/docs/animacao.gif)
+[![VIDEO](https://github.com/marcos-bah/store-to-hero/blob/master/docs/01.png)](https://photos.google.com/share/AF1QipNIHIV-K8_Tbi5C33RplVXBNolDSf_jU9lXisIuzY_bWI75iUn3wb7i5VHqVJ79ew/photo/AF1QipNk1l8flE_r7LH3vK9SX8-2v5SIkCQk4DHrQ_E?key=ZXBsb2FzUGJuV3VMejNGTFI5SDVlTW5UUUdSNUVB)
 
 ## Getting Started
 

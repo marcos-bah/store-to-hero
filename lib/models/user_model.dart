@@ -21,11 +21,11 @@ class UserModel extends Model {
     _loadCurrentUser();
   }
 
-  signUpGoogle(user) async {
+  signUpExt(user) async {
+    print(user);
     Map<String, dynamic> userDate = {
       "name": user.displayName,
       "email": user.email,
-      "tel": user.phoneNumber,
     };
 
     isLoading = true;

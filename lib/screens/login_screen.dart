@@ -73,7 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
               final FirebaseUser user =
                   (await _auth.signInWithCredential(credential).then((user) {
                 print("signed in " + user.displayName);
-                model.signUpGoogle(user);
+                model.signUpExt(user);
               }));
               _onSuccess();
               return user;
@@ -245,7 +245,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               .signInWithCredential(credential);
 
                           _onSuccess();
-                          model.signUpGoogle(user);
+                          model.signUpExt(user);
                           break;
 
                         case GitHubSignInResultStatus.cancelled:

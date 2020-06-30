@@ -33,6 +33,11 @@ dependencies:
   url_launcher: ^5.1.1
   github_sign_in: ^0.0.1
   google_sign_in: ^4.5.1
+  flutter_launcher_icons: ^0.7.5
+
+flutter_icons:
+  image_path: "images/logo.png"
+  android: true
   
 
 
